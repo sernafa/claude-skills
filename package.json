@@ -1,0 +1,45 @@
+{
+  "name": "@sernafa/claude-skills",
+  "version": "1.0.0",
+  "description": "Senior-level reusable skills for Claude Code CLI",
+  "keywords": [
+    "claude-skill",
+    "claude-code",
+    "senior",
+    "commit",
+    "git",
+    "devops",
+    "iac",
+    "terraform",
+    "kubernetes"
+  ],
+  "author": {
+    "name": "sernafa",
+    "email": "sergio@navarrofajardo.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sernafa/claude-skills.git"
+  },
+  "homepage": "https://github.com/sernafa/claude-skills#readme",
+  "bugs": {
+    "url": "https://github.com/sernafa/claude-skills/issues"
+  },
+  "bin": {
+    "claude-skills": "./bin/cli.js"
+  },
+  "scripts": {
+    "list": "node scripts/list-skills.js",
+    "validate": "node scripts/validate-skills.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "scripts/",
+    ".claude-plugin/"
+  ]
+}

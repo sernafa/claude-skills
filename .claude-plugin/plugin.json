@@ -1,0 +1,28 @@
+{
+  "name": "claude-skills",
+  "version": "1.0.0",
+  "description": "Collection of senior-level Claude Code skills covering commit writing, architecture, DevOps, IaC, and engineering best practices.",
+  "author": {
+    "name": "sernafa",
+    "email": "sergio@navarrofajardo.com"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/sernafa/claude-skills",
+  "keywords": [
+    "claude-skill",
+    "claude-code",
+    "senior",
+    "commit",
+    "git",
+    "terraform",
+    "kubernetes",
+    "devops",
+    "iac",
+    "gitops",
+    "ci-cd",
+    "security",
+    "observability",
+    "architecture"
+  ],
+  "skills": "./skills/"
+}
