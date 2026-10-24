@@ -5,14 +5,14 @@
   },
   "metadata": {
     "description": "Senior-level reusable skills for Claude Code CLI — commit writing, code review, architecture, and more.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "claude-skills",
       "source": "./",
       "description": "Collection of senior-level Claude Code skills covering commit writing, architecture, DevOps, IaC, and engineering best practices.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "sernafa",
         "email": "sergio@navarrofajardo.com"

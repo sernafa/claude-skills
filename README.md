@@ -11,6 +11,7 @@ A marketplace-ready collection of Claude Code skills covering commit writing, ar
 | Skill | Description |
 |-------|-------------|
 | [senior-commit-writer](skills/senior-commit-writer/SKILL.md) | Produces senior-level commit messages and branch descriptions for any Git-managed work (app dev, IaC, Kubernetes, GitOps, CI/CD, security, observability, data, docs, architecture) |
+| [arcane-cli](skills/arcane-cli/SKILL.md) | Manages the Docker homelab with arcane-cli (Arcane): containers, Compose projects, images, volumes, networks, remote environments, GitOps, backups, auto-updater, vulnerabilities and webhooks |
 
 ---
 
