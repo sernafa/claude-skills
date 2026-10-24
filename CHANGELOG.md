@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-10-24
+
+### Added
+
+- `technitium-dns` skill: manages a Technitium DNS Server over its HTTP API — authoritative zones and records, DNSSEC, conditional forwarders, DNS cache, allowed/blocked zones, block lists, DNS apps, settings and backups, DHCP, users and permissions, clustering and query logs
+
 ## [1.1.0] - 2026-10-24
 
 ### Added
