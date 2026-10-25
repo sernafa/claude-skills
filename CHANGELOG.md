@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-10-25
+
+### Added
+
+- `fortigate-api` skill: administers FortiGate/FortiOS 7.4.x devices exclusively through the authenticated HTTPS REST API — read-only by default, writes gated behind an explicit preview-and-approval flow, API token kept out of the repo via `FORTIGATE_API_TOKEN`, and a bundled stdlib-only Python client (`scripts/fortigate_api.py`)
+
 ## [1.2.0] - 2026-10-24
 
 ### Added

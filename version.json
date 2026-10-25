@@ -1,9 +1,10 @@
 {
-  "version": "1.2.0",
-  "skillCount": 3,
+  "version": "1.3.0",
+  "skillCount": 4,
   "skills": [
     "senior-commit-writer",
     "arcane-cli",
-    "technitium-dns"
+    "technitium-dns",
+    "fortigate-api"
   ]
 }

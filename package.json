@@ -1,6 +1,6 @@
 {
   "name": "@sernafa/claude-skills",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Senior-level reusable skills for Claude Code CLI",
   "keywords": [
     "claude-skill",

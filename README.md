@@ -13,6 +13,7 @@ A marketplace-ready collection of Claude Code skills covering commit writing, ar
 | [senior-commit-writer](skills/senior-commit-writer/SKILL.md) | Produces senior-level commit messages and branch descriptions for any Git-managed work (app dev, IaC, Kubernetes, GitOps, CI/CD, security, observability, data, docs, architecture) |
 | [arcane-cli](skills/arcane-cli/SKILL.md) | Manages the Docker homelab with arcane-cli (Arcane): containers, Compose projects, images, volumes, networks, remote environments, GitOps, backups, auto-updater, vulnerabilities and webhooks |
 | [technitium-dns](skills/technitium-dns/SKILL.md) | Manages a Technitium DNS Server over its HTTP API: zones and records, DNSSEC, forwarders, cache, allowed/blocked zones, block lists, DNS apps, settings and backups, DHCP, users and permissions, clustering and query logs |
+| [fortigate-api](skills/fortigate-api/SKILL.md) | Administers FortiGate/FortiOS firewalls exclusively through the authenticated HTTPS REST API: read-only by default, writes gated behind an explicit preview-and-approval flow, API-token auth via environment variables, bundled stdlib-only Python client |
 
 ---
 
