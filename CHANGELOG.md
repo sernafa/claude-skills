@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- `phpipam-api` skill: administers phpIPAM servers exclusively through the authenticated HTTPS REST API — read-only by default, writes gated behind an explicit preview-and-approval flow, token auth via `PHPIPAM_TOKEN` or `PHPIPAM_USERNAME`/`PHPIPAM_PASSWORD`, and a bundled stdlib-only Python client (`scripts/phpipam_api.py`) for sections, subnets, addresses, VLANs, VRFs, devices and automated subnet/address allocation
+
 ## [1.3.0] - 2026-10-25
 
 ### Added
