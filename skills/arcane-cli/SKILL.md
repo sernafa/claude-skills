@@ -6,8 +6,9 @@ description: Manage the Docker homelab with arcane-cli (Arcane) — containers, 
 # Arcane CLI
 
 `arcane-cli` is the official CLI for Arcane (a Docker management platform with
-a web UI). It talks to an Arcane server (`https://arcane.example.com`) which in
-turn controls the local Docker host and remote environments via the edge agent.
+a web UI). It talks to your Arcane server (for example
+`https://arcane.example.com`), which controls the local Docker host and
+remote environments via the edge agent.
 
 ## Golden rules
 

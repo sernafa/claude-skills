@@ -1,15 +1,17 @@
 ---
 name: pocket-id-api
-description: Administer the Pocket-ID IdP instance (pocket-id.example.com) through its REST API — users, user groups, OIDC clients, app configuration, audit logs, signup tokens and version checks. Use when the user asks to inspect, create, modify or delete Pocket-ID resources, check the IdP version, or troubleshoot Pocket-ID.
+description: Administer a Pocket-ID IdP instance through its REST API — users, user groups, OIDC clients, app configuration, audit logs, signup tokens and version checks. Use when the user asks to inspect, create, modify or delete Pocket-ID resources, check the IdP version, or troubleshoot Pocket-ID.
 ---
 
-# Pocket-ID Administration (pocket-id.example.com)
+# Pocket-ID Administration
 
 Guide for administering the user's Pocket-ID instance via its REST API.
 
 ## Connection and authentication
 
-- **Base URL:** `$POCKET_ID_BASE_URL` (defaults to `https://pocket-id.example.com`)
+- **Base URL:** `$POCKET_ID_BASE_URL` — the URL of the Pocket-ID instance
+  (for example `https://pocket-id.example.com`). If it is not set, ask the
+  user; do not guess.
 - **API key:** `$POCKET_ID_API_KEY`
 - **Auth header:** `X-API-KEY` — **NEVER** use `Authorization: Bearer`, it
   returns `401 {"error":"You are not signed in"}`.
