@@ -38,6 +38,29 @@ FORTIGATE_ALLOW_WRITE=YES python3 scripts/fortigate_api.py POST /api/v2/cmdb/fir
 
 The example write is illustrative, not pre-approved; confirm the FortiOS-version-specific payload schema before use. `--body-file` must be a local JSON file with no credentials.
 
+## URL path conventions (dotted categories)
+
+Some CLI nodes whose config command has three words map to REST paths where a
+**dot replaces the space** in the first two words. Use the dotted form, with a
+**trailing slash** for collection GETs. Requests using the flat `a/b/c` form for
+these resources return HTTP 400 with an **empty error body** (no `cli_error`
+field), which is easy to misread as a permissions problem:
+
+| CLI node | REST path |
+| --- | --- |
+| `config firewall service custom` | `/api/v2/cmdb/firewall.service/custom/<name>/` |
+| `config firewall service group` | `/api/v2/cmdb/firewall.service/group/<name>/` |
+| `config firewall service category` | `/api/v2/cmdb/firewall.service/category/` |
+| `config firewall schedule recurring` | `/api/v2/cmdb/firewall.schedule/recurring/` |
+| `config vpn ipsec phase1-interface` | `/api/v2/cmdb/vpn.ipsec/phase1-interface/` |
+
+Verified on FortiOS 7.4.7: a GET on `/api/v2/cmdb/firewall.service/custom/<name>/`
+returns HTTP 200, while the flat form `/api/v2/cmdb/firewall/service/custom/<name>`
+returns HTTP 400 on that build. Two-word nodes (`firewall/address`,
+`firewall/policy`, `user/group`) work in the plain form. When a documented
+resource returns 400 with an empty body, retry once with the dotted-path variant
+before concluding anything about access profiles.
+
 ## Workflow
 
 1. Clarify target FortiGate device and VDOM; establish its FortiOS version with version-appropriate documented GET endpoints or user-supplied information.

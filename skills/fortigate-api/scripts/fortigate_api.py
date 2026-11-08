@@ -21,7 +21,7 @@ def fail(message):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("method", choices=["GET", "POST", "PUT", "PATCH", "DELETE"])
-    ap.add_argument("path", help="Documented FortiOS /api/v2/cmdb/ or /api/v2/monitor/ path")
+    ap.add_argument("path", help="Documented FortiOS /api/v2/cmdb/ or /api/v2/monitor/ path; three-word CLI nodes use dotted paths, e.g. /api/v2/cmdb/firewall.service/custom/<name>/")
     ap.add_argument("--vdom", default=None)
     ap.add_argument("--body-file", default=None)
     ap.add_argument("--confirm-write", action="store_true")

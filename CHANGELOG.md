@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `fortigate-api` skill: documents the dotted REST path convention for three-word CLI nodes (`firewall.service/custom/`, `vpn.ipsec/phase1-interface/`, ...), where the flat `a/b/c` form fails with HTTP 400 and an empty error body that is easy to misread as an access-profile problem; the bundled client's `path` help now states the convention (verified against FortiOS 7.4.7)
+
 ## [1.4.0] - 2026-11-08
 
 ### Added
