@@ -1,6 +1,6 @@
 {
   "name": "claude-skills",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Collection of senior-level Claude Code skills covering commit writing, architecture, DevOps, IaC, and engineering best practices.",
   "author": {
     "name": "sernafa",
