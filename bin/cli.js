@@ -41,20 +41,18 @@ function addSkill(skillName) {
     process.exit(1);
   }
 
-  const src = path.join(SKILLS_DIR, skillName, 'SKILL.md');
-  if (!fs.existsSync(src)) {
+  const srcDir = path.join(SKILLS_DIR, skillName);
+  if (!fs.existsSync(path.join(srcDir, 'SKILL.md'))) {
     console.error(`Skill not found: "${skillName}"`);
     console.error('Run with "list" to see available skills.');
     process.exit(1);
   }
 
   const destDir = path.join(CLAUDE_SKILLS_DIR, skillName);
-  fs.mkdirSync(destDir, { recursive: true });
+  fs.rmSync(destDir, { recursive: true, force: true });
+  fs.cpSync(srcDir, destDir, { recursive: true });
 
-  const dest = path.join(destDir, 'SKILL.md');
-  fs.copyFileSync(src, dest);
-
-  console.log(`Skill "${skillName}" installed to ${dest}`);
+  console.log(`Skill "${skillName}" installed to ${destDir}`);
   console.log('Restart Claude Code to activate it.');
 }
 
