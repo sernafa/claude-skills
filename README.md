@@ -15,6 +15,7 @@ A marketplace-ready collection of Claude Code skills covering commit writing, ar
 | [technitium-dns](skills/technitium-dns/SKILL.md) | Manages a Technitium DNS Server over its HTTP API: zones and records, DNSSEC, forwarders, cache, allowed/blocked zones, block lists, DNS apps, settings and backups, DHCP, users and permissions, clustering and query logs |
 | [fortigate-api](skills/fortigate-api/SKILL.md) | Administers FortiGate/FortiOS firewalls exclusively through the authenticated HTTPS REST API: read-only by default, writes gated behind an explicit preview-and-approval flow, API-token auth via environment variables, bundled stdlib-only Python client |
 | [phpipam-api](skills/phpipam-api/SKILL.md) | Administers phpIPAM IPAM servers exclusively through the authenticated HTTPS REST API: read-only by default, writes gated behind an explicit preview-and-approval flow, token auth via environment variables, bundled stdlib-only Python client for sections, subnets, addresses, VLANs, VRFs, devices and automated subnet/address allocation |
+| [pocket-id-api](skills/pocket-id-api/SKILL.md) | Administers the Pocket-ID IdP exclusively through its authenticated REST API: users, user groups, OIDC clients, application configuration, audit logs, signup tokens and version checks — read-only by default, destructive writes gated behind explicit confirmation, API-key auth via `X-API-KEY` with credentials kept in environment variables |
 
 ---
 

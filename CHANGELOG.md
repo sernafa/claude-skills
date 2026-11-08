@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `phpipam-api` skill: administers phpIPAM servers exclusively through the authenticated HTTPS REST API — read-only by default, writes gated behind an explicit preview-and-approval flow, token auth via `PHPIPAM_TOKEN` or `PHPIPAM_USERNAME`/`PHPIPAM_PASSWORD`, and a bundled stdlib-only Python client (`scripts/phpipam_api.py`) for sections, subnets, addresses, VLANs, VRFs, devices and automated subnet/address allocation
+- `pocket-id-api` skill: administers Pocket-ID IdP servers exclusively through the authenticated REST API — users, user groups, OIDC clients, application configuration, audit logs, signup tokens and version checks; read-only by default, destructive writes gated behind explicit confirmation, `X-API-KEY` auth with credentials kept in environment variables (`POCKET_ID_BASE_URL`, `POCKET_ID_API_KEY`)
 
 ## [1.3.0] - 2026-10-25
 
