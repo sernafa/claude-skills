@@ -9,10 +9,17 @@ Guide for administering the user's Pocket-ID instance via its REST API.
 
 ## Connection and authentication
 
+Resolve connection data in this order; stop once every required key is available:
+
+1. **Exported environment variables** — `$POCKET_ID_BASE_URL` and `$POCKET_ID_API_KEY`
+2. **`~/.config/secrets/.env.pocket-id-api`** — skill-specific `KEY=VALUE` file; only keys not already exported
+3. **`~/.config/secrets/.env`** — shared `KEY=VALUE` secrets file, for keys still missing
+4. **Ask the user** — never guess a URL or key
+
 - **Base URL:** `$POCKET_ID_BASE_URL` — the URL of the Pocket-ID instance
-  (for example `https://pocket-id.example.com`). If it is not set, ask the
-  user; do not guess.
-- **API key:** `$POCKET_ID_API_KEY`
+  (for example `https://pocket-id.example.com`)
+- **API key:** `$POCKET_ID_API_KEY` (if still missing after the files above, it
+  is found in Pocket-ID → Administration → API Keys)
 - **Auth header:** `X-API-KEY` — **NEVER** use `Authorization: Bearer`, it
   returns `401 {"error":"You are not signed in"}`.
 
@@ -20,10 +27,9 @@ Guide for administering the user's Pocket-ID instance via its REST API.
 curl -sS -H "X-API-KEY: $POCKET_ID_API_KEY" "$POCKET_ID_BASE_URL/api/users"
 ```
 
-**If `$POCKET_ID_API_KEY` is not set in the environment:** ask the user for the
-key (it is found in Pocket-ID → Administration → API Keys). Never repeat it in
-full in your replies or write it to any file; use it only in memory for the API
-calls.
+**Handling secrets:** never echo secrets or dump secret-file contents, never
+repeat a key in full in your replies, and never write credentials to any file;
+use them only in memory for the API calls.
 
 ## API conventions
 

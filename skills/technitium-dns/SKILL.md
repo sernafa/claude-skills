@@ -16,15 +16,23 @@ uses: any action doable in the console is automatable here with `curl` + `jq`.
 
 ## Golden rules
 
-1. **Never run destructive calls without the user's confirmation**:
+1. **Read-only by default.** Any mutating call (`add`, `create`, `set`,
+   `update`, `delete`, `import`, `sign`, flushes, cluster membership
+   changes, ...) requires the user's explicit request and confirmation of
+   the specific change — show the exact endpoint and parameters first, then
+   wait for approval before running it. **Never run destructive calls** —
    `zones/delete`, `zones/dnssec/unsign`, `blocked/flush`, `allowed/flush`,
    `cache/flush`, `logs/deleteAll`, `dashboard/stats/deleteAll`,
    `settings/restore` (with `deleteExistingFiles=true`), `admin/users/delete`,
    and all cluster membership calls (`cluster/init`, `secondary/leave`,
-   `primary/removeSecondary`, ...).
-2. **Credentials and tokens never go into the repo.** Use environment
-   variables: `TECHNIUM_URL` (default `http://localhost:5380`) and
-   `TECHNIUM_TOKEN`. If they are unset, ask the user — do not guess.
+   `primary/removeSecondary`, ...) — **without a separate, explicit
+   confirmation.**
+2. **Credentials and tokens never go into the repo.** Resolve connection data
+   in this order: exported environment variables (`TECHNIUM_URL`, default
+   `http://localhost:5380`, and `TECHNIUM_TOKEN`), then
+   `~/.config/secrets/.env.technitium-dns`, then `~/.config/secrets/.env`
+   (both `KEY=VALUE`; only keys not already exported), and finally ask the
+   user — do not guess. Never echo secrets or commit `.env` files.
 3. **Always check the response envelope.** Every call returns JSON with
    `status`: `ok` on success, `error` (read `errorMessage`),
    `invalid-token` (session expired — re-authenticate),
@@ -42,9 +50,18 @@ uses: any action doable in the console is automatable here with `curl` + `jq`.
 
 ## Environment setup
 
-Export before the first call (ask the user for values you don't have):
+Credential discovery: exported environment variables first, then
+`~/.config/secrets/.env.technitium-dns`, then `~/.config/secrets/.env`
+(only keys not already exported); anything still missing, ask the user:
 
 ```sh
+for f in ~/.config/secrets/.env.technitium-dns ~/.config/secrets/.env; do
+  [ -f "$f" ] || continue
+  while IFS='=' read -r key value; do
+    case "$key" in ''|\#*) continue ;; esac
+    [ -n "${!key:-}" ] || export "$key=$value"
+  done < "$f"
+done
 BASE_URL="${TECHNIUM_URL:-http://localhost:5380}"
 TOKEN="${TECHNIUM_TOKEN:?TECHNIUM_TOKEN is not set — ask the user}"
 api() { curl -fsS -H "Authorization: Bearer $TOKEN" "$@"; }

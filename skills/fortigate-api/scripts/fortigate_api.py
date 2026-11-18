@@ -18,6 +18,39 @@ def fail(message):
     raise SystemExit(2)
 
 
+SKILL_NAME = os.path.basename(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def _read_env_file(path):
+    """Yield KEY=VALUE pairs from a dotenv-style file; blanks and # comments ignored."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, _, value = line.partition("=")
+                key, value = key.strip(), value.strip()
+                if len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
+                    value = value[1:-1]
+                if key:
+                    yield key, value
+    except OSError:
+        return
+
+
+def load_secrets():
+    """Fill connection variables missing from the environment: exported
+    environment wins, then ~/.config/secrets/.env.<skill-name>, then
+    ~/.config/secrets/.env. Write-approval flags are never loaded from files."""
+    secrets_dir = os.path.join(os.path.expanduser("~"), ".config", "secrets")
+    for filename in (f".env.{SKILL_NAME}", ".env"):
+        for key, value in _read_env_file(os.path.join(secrets_dir, filename)):
+            if key.endswith("_ALLOW_WRITE"):
+                continue
+            os.environ.setdefault(key, value)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("method", choices=["GET", "POST", "PUT", "PATCH", "DELETE"])
@@ -29,6 +62,7 @@ def main():
     ap.add_argument("--timeout", type=float, default=20)
     args = ap.parse_args()
 
+    load_secrets()
     host = os.environ.get("FORTIGATE_HOST", "").strip()
     token = os.environ.get("FORTIGATE_API_TOKEN", "")
     if not host or not token:

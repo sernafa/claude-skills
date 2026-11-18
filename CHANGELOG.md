@@ -9,8 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- All API skills (`fortigate-api`, `phpipam-api`, `pocket-id-api`, `technitium-dns`): shared credential discovery order — exported environment variables first, then `~/.config/secrets/.env.<skill-name>`, then `~/.config/secrets/.env`, and only then ask the user. The bundled Python clients of `fortigate-api` and `phpipam-api` implement it natively (environment always wins over file values; `_ALLOW_WRITE` approval flags are never loaded from secret files)
+
 ### Changed
 
+- `technitium-dns` skill: golden rules upgraded to read-only by default — every mutating call (`add`/`create`/`set`/`delete`/`import`/`sign`/flushes/cluster changes) now requires an explicit preview-and-approval; destructive calls keep their separate confirmation
+- `arcane-cli` skill: golden rules upgraded to read-only by default — every mutating command (`up`/`redeploy`/`pull`/`create`/`restart`/`update`/`switch`/`sync`/`run`/`trigger`) now requires an explicit approval; destructive commands keep their separate confirmation, and `--yes` is now also gated on mutations
 - `fortigate-api` skill: documents the dotted REST path convention for three-word CLI nodes (`firewall.service/custom/`, `vpn.ipsec/phase1-interface/`, ...), where the flat `a/b/c` form fails with HTTP 400 and an empty error body that is easy to misread as an access-profile problem; the bundled client's `path` help now states the convention (verified against FortiOS 7.4.7)
 
 ## [1.4.0] - 2026-11-08

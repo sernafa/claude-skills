@@ -70,6 +70,7 @@ Increment `skillCount` and add your skill name to the `skills` array.
 - Focus the description on outcomes and context, not process steps
 - Use second-person imperative voice ("Run:", "Analyze:", "Focus on:")
 - Structure with H1 (title), H2 (major sections), H3 (subsections)
+- Skills that connect to external services must document the shared credential discovery order: exported environment variables → `~/.config/secrets/.env.<skill-name>` → `~/.config/secrets/.env` → ask the user. Bundled clients should implement it natively; the exported environment always wins, and write-approval flags are never loaded from secret files
 
 ---
 

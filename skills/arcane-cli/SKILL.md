@@ -12,11 +12,16 @@ remote environments via the edge agent.
 
 ## Golden rules
 
-1. **Never run destructive commands without the user's confirmation**
-   (`projects down|destroy`, `containers rm|stop`, `images prune`,
-   `system prune`, `admin backups restore`, `volumes rm`). `--yes` skips the
-   prompt in unattended scripts, but here the user IS the confirmation: ask
-   before adding `--yes` to a destructive operation.
+1. **Read-only by default.** Any mutating command (`projects up|redeploy|pull`,
+   `containers create|restart|update`, `images pull`, `environments switch`,
+   `gitops sync`, `updater run`, `webhooks trigger`, ...) requires the user's
+   explicit request and confirmation of the specific change — announce the
+   exact command first, then wait for approval before running it. **Never run
+   destructive commands** — `projects down|destroy`, `containers rm|stop`,
+   `images prune`, `system prune`, `admin backups restore`, `volumes rm` —
+   **without a separate, explicit confirmation.** `--yes` skips the prompt in
+   unattended scripts, but here the user IS the confirmation: ask before
+   adding `--yes` to a mutating or destructive operation.
 2. **Without a TTY, confirmation prompts fail** with
    `confirmation required: re-run with --yes`. Piping `y` into the command does
    not answer them.
