@@ -1,12 +1,13 @@
 {
   "version": "1.4.0",
-  "skillCount": 6,
+  "skillCount": 7,
   "skills": [
     "senior-commit-writer",
     "arcane-cli",
     "technitium-dns",
     "fortigate-api",
     "phpipam-api",
-    "pocket-id-api"
+    "pocket-id-api",
+    "patchmon-api"
   ]
 }
